@@ -1,0 +1,19 @@
+.post-title {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.post-title:hover {
+    text-decoration: underline;
+}
+
+.post-author {
+    text-decoration: none;
+    font-style: italic;
+    color: black;
+}
+
+.post-author:hover {
+    text-decoration: underline;
+}

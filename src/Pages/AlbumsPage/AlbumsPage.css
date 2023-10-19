@@ -1,0 +1,14 @@
+.album-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px
+}
+
+.album-title-link {
+    text-decoration: none;
+    color: black;
+}
+
+.album-title:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,29 @@
+.page-header {
+    background-color: silver;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.page-header .nav-list {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page-header .nav-list a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.page-header .nav-list a.active {
+    text-decoration: underline;
+}
+
+.page-header .nav-list a:hover {
+    text-decoration: underline;
+}

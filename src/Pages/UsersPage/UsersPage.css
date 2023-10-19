@@ -1,0 +1,9 @@
+.user-link {
+    text-decoration: none;
+    color: black;
+}
+
+.user-link:hover {
+    text-decoration: underline;
+
+}
