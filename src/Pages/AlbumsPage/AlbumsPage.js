@@ -13,7 +13,6 @@ function AlbumsPage() {
         "https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos"
       );
       const albumsData = await res.json();
-      console.log(albumsData);
       setAlbums(albumsData);
     };
 
@@ -36,12 +35,14 @@ function AlbumsPage() {
           </div>
           {album.photos.length > 0 && (
             <div>
-              <img src={album.photos[0].thumbnailUrl} alt="" />
+              <Link to={`/albums/${album.id}`}>
+                <img src={album.photos[0].thumbnailUrl} alt="" />
+              </Link>
             </div>
           )}
           <span>
             Author:
-            <Link to={`/users/${album.user.id}`}> {album.user.name}</Link>
+            <Link to={`/users/${album.user.id}`}>{album.user.name}</Link>
           </span>
         </div>
       ))}

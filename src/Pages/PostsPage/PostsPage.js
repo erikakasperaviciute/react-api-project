@@ -13,7 +13,6 @@ function PostsPage() {
         "https://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments"
       );
       const postsData = await res.json();
-      console.log(postsData);
       setPosts(postsData);
     };
 

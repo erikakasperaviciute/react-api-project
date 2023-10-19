@@ -12,7 +12,6 @@ function UsersPage() {
         "https://jsonplaceholder.typicode.com/users?_embed=posts"
       );
       const usersData = await res.json();
-      console.log(usersData);
       setUsers(usersData);
     };
 
