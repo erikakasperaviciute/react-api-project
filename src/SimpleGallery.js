@@ -16,7 +16,7 @@ export default function SimpleGallery(props) {
       lightbox.destroy();
       lightbox = null;
     };
-  }, []);
+  }, [props.galleryID]);
 
   return (
     <div className="pswp-gallery" id={props.galleryID}>

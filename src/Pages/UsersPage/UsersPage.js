@@ -2,21 +2,33 @@ import { useState, useEffect } from "react";
 import Container from "../../Components/Container/Container";
 import { Link } from "react-router-dom";
 import "./UsersPage.css";
+import axios from "axios";
 
 function UsersPage() {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const res = await fetch(
-        "https://jsonplaceholder.typicode.com/users?_embed=posts"
-      );
-      const usersData = await res.json();
-      setUsers(usersData);
-    };
+  const getUsers = async () => {
+    const { data } = await axios.get(
+      "https://jsonplaceholder.typicode.com/users?_embed=posts"
+    );
+    setUsers(data);
+  };
 
-    fetchUsers();
+  useEffect(() => {
+    getUsers();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     const res = await fetch(
+  //       "https://jsonplaceholder.typicode.com/users?_embed=posts"
+  //     );
+  //     const usersData = await res.json();
+  //     setUsers(usersData);
+  //   };
+
+  //   fetchUsers();
+  // }, []);
 
   return (
     <Container>

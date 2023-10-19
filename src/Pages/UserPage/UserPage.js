@@ -3,23 +3,34 @@ import Container from "../../Components/Container/Container";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import firstLetterUpperCase from "../../utils";
+import axios from "axios";
 
 function UserPage() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    async function fetchUser() {
-      const res = await fetch(
+    const getUser = async () => {
+      const { data } = await axios.get(
         `https://jsonplaceholder.typicode.com/users/${id}?_embed=posts&_embed=albums`
       );
-      const userData = await res.json();
-      setUser(userData);
-      console.log(userData);
-    }
+      setUser(data);
+    };
 
-    fetchUser();
+    getUser();
   }, [id]);
+
+  // useEffect(() => {
+  //   async function fetchUser() {
+  //     const res = await fetch(
+  //       `https://jsonplaceholder.typicode.com/users/${id}?_embed=posts&_embed=albums`
+  //     );
+  //     const userData = await res.json();
+  //     setUser(userData);
+  //   }
+
+  //   fetchUser();
+  // }, [id]);
 
   const userElement = user && (
     <div>

@@ -3,21 +3,34 @@ import Container from "../../Components/Container/Container";
 import { Link } from "react-router-dom";
 import firstLetterUpperCase from "../../utils";
 import "./AlbumsPage.css";
+import axios from "axios";
 
 function AlbumsPage() {
   const [albums, setAlbums] = useState([]);
 
-  useEffect(() => {
-    const fetchAlbums = async () => {
-      const res = await fetch(
-        "https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos"
-      );
-      const albumsData = await res.json();
-      setAlbums(albumsData);
-    };
+  const getAlbums = async () => {
+    const { data } = await axios.get(
+      "https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos"
+    );
+    setAlbums(data);
+    console.log(data);
+  };
 
-    fetchAlbums();
+  useEffect(() => {
+    getAlbums();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchAlbums = async () => {
+  //     const res = await fetch(
+  //       "https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos"
+  //     );
+  //     const albumsData = await res.json();
+  //     setAlbums(albumsData);
+  //   };
+
+  //   fetchAlbums();
+  // }, []);
 
   return (
     <Container>

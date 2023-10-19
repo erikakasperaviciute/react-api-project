@@ -3,24 +3,35 @@ import Container from "../../Components/Container/Container";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import firstLetterUpperCase from "../../utils";
+import axios from "axios";
 
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    async function fetchPost() {
-      const res = await fetch(
+    const getPost = async () => {
+      const { data } = await axios.get(
         `https://jsonplaceholder.typicode.com/posts/${id}?_embed=comments&_expand=user`
       );
-      const postData = await res.json();
+      setPost(data);
+    };
 
-      setPost(postData);
-      console.log(postData);
-    }
-
-    fetchPost();
+    getPost();
   }, [id]);
+
+  // useEffect(() => {
+  //   async function fetchPost() {
+  //     const res = await fetch(
+  //       `https://jsonplaceholder.typicode.com/posts/${id}?_embed=comments&_expand=user`
+  //     );
+  //     const postData = await res.json();
+
+  //     setPost(postData);
+  //   }
+
+  //   fetchPost();
+  // }, [id]);
 
   const postElement = post && (
     <div>

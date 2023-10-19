@@ -6,22 +6,34 @@ import firstLetterUpperCase from "../../utils";
 import SimpleGallery from "../../SimpleGallery";
 import "photoswipe/dist/photoswipe.css";
 import "./AlbumPage.css";
+import axios from "axios";
 
 function AlbumPage() {
   const { id } = useParams();
   const [album, setAlbum] = useState(null);
 
   useEffect(() => {
-    async function fetchAlbum() {
-      const res = await fetch(
+    const getAlbum = async () => {
+      const { data } = await axios.get(
         `https://jsonplaceholder.typicode.com/albums/${id}?_expand=user&_embed=photos`
       );
-      const albumData = await res.json();
-      setAlbum(albumData);
-    }
+      setAlbum(data);
+    };
 
-    fetchAlbum();
+    getAlbum();
   }, [id]);
+
+  // useEffect(() => {
+  //   async function fetchAlbum() {
+  //     const res = await fetch(
+  //       `https://jsonplaceholder.typicode.com/albums/${id}?_expand=user&_embed=photos`
+  //     );
+  //     const albumData = await res.json();
+  //     setAlbum(albumData);
+  //   }
+
+  //   fetchAlbum();
+  // }, [id]);
 
   const albumElement = album ? (
     <div className="album-wrapper">

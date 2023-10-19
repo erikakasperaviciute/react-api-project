@@ -3,21 +3,33 @@ import Container from "../../Components/Container/Container";
 import { Link } from "react-router-dom";
 import "./PostsPage.css";
 import firstLetterUpperCase from "../../utils";
+import axios from "axios";
 
 function PostsPage() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await fetch(
-        "https://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments"
-      );
-      const postsData = await res.json();
-      setPosts(postsData);
-    };
+  const getPosts = async () => {
+    const { data } = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments"
+    );
+    setPosts(data);
+  };
 
-    fetchPosts();
+  useEffect(() => {
+    getPosts();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const res = await fetch(
+  //       "https://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments"
+  //     );
+  //     const postsData = await res.json();
+  //     setPosts(postsData);
+  //   };
+
+  //   fetchPosts();
+  // }, []);
 
   return (
     <Container>
