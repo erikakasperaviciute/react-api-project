@@ -1,0 +1,78 @@
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    padding: 25px 0 50px;
+}
+
+.posts-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+}
+
+.posts-wrapper .post-item {
+    background-color: whitesmoke;
+    padding: 20px 30px;
+    grid-column-start: span 1;
+}
+
+.posts-wrapper .post-item:hover {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title-comments-wrapper h3 {
+    margin-bottom: 5px;
+
+}
+
+.posts-wrapper .post-item:first-of-type {
+    grid-column-start: span 2;
+}
+
+.post-author {
+    margin-left: 5px;
+}
+
+.page-wrapper .albums-wrapper .album-card {
+    width: 100%;
+}
+
+.users-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.users-wrapper .user-card {
+    background-color: whitesmoke;
+    padding: 20px 30px;
+}
+
+.users-wrapper .user-card:hover {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-card h4 {
+    margin: 0 0 8px;
+}
+
+.button {
+    border: 1px solid mediumblue;
+    padding: 15px 35px;
+    margin-top: 15px;
+    text-align: center;
+
+}
+
+.button:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.link-btn {
+    color: mediumblue;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}

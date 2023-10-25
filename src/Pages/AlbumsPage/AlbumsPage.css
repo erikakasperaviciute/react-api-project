@@ -1,7 +1,37 @@
+.albums-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px
+}
+
+.album-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 15px 25px;
+    width: 300px;
+}
+
+.album-card:hover {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
 .album-title-wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 5px
+}
+
+.album-title {
+    margin-bottom: 0px;
+}
+
+.album-title-wrapper span {
+    margin-bottom: 10px;
 }
 
 .album-title-link {
@@ -10,5 +40,17 @@
 }
 
 .album-title:hover {
+    text-decoration: underline;
+}
+
+
+.author-link {
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+
+}
+
+.author-link:hover {
     text-decoration: underline;
 }

@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import "./PostsPage.css";
 import firstLetterUpperCase from "../../utils";
 import axios from "axios";
+import { API_URL } from "../../../src/config";
 
 function PostsPage() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
     const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts?_expand=user&_embed=comments"
+      `${API_URL}/posts?_expand=user&_embed=comments`
     );
     setPosts(data);
   };
@@ -34,6 +35,7 @@ function PostsPage() {
   return (
     <Container>
       <h1>Posts Page</h1>
+      <Link to="/create-post">Create New Post</Link>
       <ul className="posts-list">
         {posts.map((post) => (
           <li key={post.id} className="post-item">
@@ -42,7 +44,6 @@ function PostsPage() {
             </Link>{" "}
             Author:
             <Link to={`/users/${post.user.id}`} className="post-author">
-              {" "}
               {post.user.name}
             </Link>{" "}
             ({post.comments.length} Comments)

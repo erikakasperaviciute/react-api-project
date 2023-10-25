@@ -3,14 +3,13 @@ import Container from "../../Components/Container/Container";
 import { Link } from "react-router-dom";
 import "./UsersPage.css";
 import axios from "axios";
+import { API_URL } from "../../../src/config";
 
 function UsersPage() {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/users?_embed=posts"
-    );
+    const { data } = await axios.get(`${API_URL}/users?_embed=posts`);
     setUsers(data);
   };
 
@@ -33,6 +32,7 @@ function UsersPage() {
   return (
     <Container>
       <h1>Users Page</h1>
+      <Link to="/create-user">Create New User</Link>
       <ul className="users-list">
         {users.map((user) => (
           <li key={user.id} className="user-item">

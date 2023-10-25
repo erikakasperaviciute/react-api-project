@@ -4,15 +4,17 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import firstLetterUpperCase from "../../utils";
 import axios from "axios";
+import { API_URL } from "../../../src/config";
 
 function UserPage() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  const [userDeleted, setUserDeleted] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${id}?_embed=posts&_embed=albums`
+        `${API_URL}/users/${id}?_embed=posts&_embed=albums`
       );
       setUser(data);
     };
@@ -32,8 +34,18 @@ function UserPage() {
   //   fetchUser();
   // }, [id]);
 
+  const removeUserHandler = () => {
+    fetch(`${API_URL}/users/${id}`, {
+      method: "DELETE",
+    });
+
+    setUserDeleted(true);
+  };
+
   const userElement = user && (
     <div>
+      <Link to={`/edit-user/${id}`}>Edit User</Link>
+      <button onClick={removeUserHandler}>Delete User</button>
       <h2>{user.name}</h2>
       <div>
         <ul>
@@ -95,7 +107,18 @@ function UserPage() {
       </div>
     </div>
   );
-  return <Container>{userElement}</Container>;
+  return (
+    <Container>
+      {userDeleted ? (
+        <>
+          <p>User deleted</p>
+          <Link to="/users">Go back to users</Link>
+        </>
+      ) : (
+        userElement
+      )}
+    </Container>
+  );
 }
 
 export default UserPage;

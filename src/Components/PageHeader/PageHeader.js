@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../Container/Container";
 import { NavLink } from "react-router-dom";
 import "./PageHeader.css";
+import SearchFormForNav from "../SearchFormForNav/SearchFormForNav";
 
 const PageHeader = () => {
   return (
@@ -25,6 +26,7 @@ const PageHeader = () => {
               <NavLink to="/albums">Albums</NavLink>
             </li>
           </ul>
+          <SearchFormForNav />
         </nav>
       </Container>
     </div>

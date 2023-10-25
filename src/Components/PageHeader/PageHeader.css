@@ -1,12 +1,18 @@
 .page-header {
-    background-color: silver;
+    background-color: whitesmoke;
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
-.page-header .nav-list {
+.main-navigation {
     display: flex;
     justify-content: flex-end;
+    gap: 30px
+}
+
+.page-header .nav-list {
+    display: flex;
+
     gap: 10px 20px;
     list-style-type: none;
     margin: 0;
